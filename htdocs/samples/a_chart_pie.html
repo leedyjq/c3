@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../css/c3.css">
+  </head>
+  <body>
+    <div id="chart2"></div>
+    <div id="chart3"></div>
+    <div id="chart4"></div>
+
+    <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+    <script src="../js/c3.js"></script>
+    <script>
+      var chart2 = c3.generate({
+        bindto: '#chart2',
+        data: {
+          columns: [
+            ["unique1", 10.4],
+            ["unique2", 33.9],
+            ["common", 0],
+          ],
+          colors: {
+            unique1: 'rgb(129,205,217)',
+            unique2: 'rgb(250, 183, 155)',
+            common: 'rgb(0, 155, 120)'
+          },
+          type : 'pie',
+          onmouseover: function (d, i) { console.log("onmouseover", d, i, this); },
+          onmouseout: function (d, i) { console.log("onmouseout", d, i, this); },
+          onclick: function (d, i) { console.log("onclick", d, i, this); },
+        },
+      });
+
+      setTimeout(function () {
+        chart2.load({
+          columns: [
+            ["common", 50.0 ],
+          ]
+        });
+      }, 1000);
+
+    </script>
+    <script>
+      var chart3 = c3.generate({
+        bindto: '#chart3',
+        data: {
+          columns: [
+            ["unique1", 10.4],
+            ["unique2", 33.9],
+          ],
+          colors: {
+            unique1: 'rgb(129,205,217)',
+            unique2: 'rgb(250, 183, 155)',
+            common: 'rgb(0, 155, 120)'
+          },
+          type : 'pie',
+          onmouseover: function (d, i) { console.log("onmouseover", d, i, this); },
+          onmouseout: function (d, i) { console.log("onmouseout", d, i, this); },
+          onclick: function (d, i) { console.log("onclick", d, i, this); },
+        },
+      });
+    </script>
+    <script>
+      var chart4 = c3.generate({
+        bindto: '#chart4',
+        data: {
+          columns: [
+            ["unique1", 10.4],
+            ["unique2", 33.9],
+          ],
+          colors: {
+            unique1: 'rgb(129,205,217)',
+            unique2: 'rgb(250, 183, 155)',
+            common: 'rgb(0, 155, 120)'
+          },
+          grid: {
+            y: {
+              lines: [{value:0}],
+              show: true
+            }
+          },
+          groups: [
+              ['unique1', 'unique2', 'common'],
+          ],
+          type : 'bar',
+          width: 100,
+          onmouseover: function (d, i) { console.log("onmouseover", d, i, this); },
+          onmouseout: function (d, i) { console.log("onmouseout", d, i, this); },
+          onclick: function (d, i) { console.log("onclick", d, i, this); },
+        },
+      });
+
+      setTimeout(function () {
+        chart4.load({
+          columns: [
+            ["common", -50.0 ],
+          ]
+        });
+      }, 1000);
+    </script>
+  </body>
+</html>
